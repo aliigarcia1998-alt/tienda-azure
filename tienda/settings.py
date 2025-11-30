@@ -25,7 +25,13 @@ SECRET_KEY = 'django-insecure-k$=u%f2$_&4ele2f+e3ve@k^%%892vj-i#8$e@zz0#&92i)jtq
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get("DJANGO_DEBUG") != "False"
 
-ALLOWED_HOSTS = os.environ.get "ALLOWED_HOSTS", "").split(",")
+ALLOWED_HOSTS = [
+    'tienda-xochitl-fwc2g7byebembqb0.eastus2-01.azurewebsites.net'
+]
+CSRF_TRUSTED_ORIGINS = [
+    "https://tienda-xochitl-fwc2g7byebembqb0.eastus2-01.azurewebsites.net"
+]
+
 
 
 # Application definition
@@ -125,3 +131,18 @@ STATIC_URL = 'static/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
 STATIC_URL = "/static/"
+
+
+STATIC_URL = '/static/'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
+MIDDLEWARE = [
+    'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
+]
